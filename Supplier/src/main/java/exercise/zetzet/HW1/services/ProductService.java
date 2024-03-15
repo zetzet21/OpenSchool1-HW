@@ -16,11 +16,6 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
 
-    public List<Product> findAllCheaperThan(long price, int page, int pageSize){
-        Pageable pageable = Pageable.ofSize(pageSize).withPage(page);
-        return productRepository.findAllByPriceLessThan(price, pageable);
-    }
-
     public Product getById(Long id){
         return productRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException(String.format("Продукта с id %d не существует", id)));
