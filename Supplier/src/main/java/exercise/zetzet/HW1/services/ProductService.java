@@ -1,18 +1,25 @@
 package exercise.zetzet.HW1.services;
 
-import exercise.zetzet.HW1.models.Product;
+import exercise.zetzet.HW1.entity.Product;
 import exercise.zetzet.HW1.repositories.ProductRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryService categoryService;
 
+    public List<Product> findAllCheaperThan(long price, int page, int pageSize){
+        Pageable pageable = Pageable.ofSize(pageSize).withPage(page);
+        return productRepository.findAllByPriceLessThan(price, pageable);
+    }
 
     public Product getById(Long id){
         return productRepository.findById(id).orElseThrow(() ->

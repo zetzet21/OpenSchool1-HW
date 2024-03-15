@@ -1,4 +1,4 @@
-package exercise.zetzet.HW1.dtos;
+package exercise.zetzet.HW1.domain;
 
 
 public record CategoryDto(String name) {

@@ -1,7 +1,7 @@
 package exercise.zetzet.HW1.controllers;
 
-import exercise.zetzet.HW1.dtos.CategoryDto;
-import exercise.zetzet.HW1.models.Category;
+import exercise.zetzet.HW1.domain.CategoryDto;
+import exercise.zetzet.HW1.entity.Category;
 import exercise.zetzet.HW1.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;

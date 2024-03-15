@@ -1,6 +1,6 @@
 package exercise.zetzet.HW1.repositories;
 
-import exercise.zetzet.HW1.models.Category;
+import exercise.zetzet.HW1.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

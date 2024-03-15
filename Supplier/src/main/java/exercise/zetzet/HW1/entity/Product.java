@@ -1,25 +1,20 @@
-package exercise.zetzet.HW1.models;
+package exercise.zetzet.HW1.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "product")
+@Table
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
     private String name;
     private String description;
     private Double price;
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 }

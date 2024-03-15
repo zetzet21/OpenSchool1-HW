@@ -1,6 +1,6 @@
 package exercise.zetzet.HW1.controllers;
 
-import exercise.zetzet.HW1.models.Product;
+import exercise.zetzet.HW1.entity.Product;
 import exercise.zetzet.HW1.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;

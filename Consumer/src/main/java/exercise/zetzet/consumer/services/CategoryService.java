@@ -2,6 +2,7 @@ package exercise.zetzet.consumer.services;
 
 import exercise.zetzet.consumer.models.Category;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,8 +13,7 @@ import java.util.Objects;
 @Service
 @RequiredArgsConstructor
 public class CategoryService {
-
-    RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private final String SUPPLIER_SERVICE_URL = "http://localhost:8080/api/v1/category";
 
     public List<Category> getAllCategories() {

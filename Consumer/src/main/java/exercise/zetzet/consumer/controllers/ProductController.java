@@ -2,21 +2,19 @@ package exercise.zetzet.consumer.controllers;
 
 
 import exercise.zetzet.consumer.models.Product;
-import exercise.zetzet.consumer.services.CategoryService;
 import exercise.zetzet.consumer.services.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.*;
@@ -25,14 +23,10 @@ import java.util.*;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("api/v1/consumer/products")
+@Validated
 public class ProductController {
 
     private final ProductService productService;
-
-    private final CategoryService categoryService;
-
-    @Value("${supplier.url:http://localhost:8080/api/v1}")
-    private String url;
 
     @GetMapping()
     public List<Product> getAllProducts() {
@@ -45,12 +39,12 @@ public class ProductController {
     }
 
     @PostMapping()
-    public Product createProduct(@RequestBody Product product) {
+    public Product createProduct(@Valid @RequestBody Product product) {
         return productService.createProduct(product);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
+    public void deleteProduct(@Valid @PathVariable Long id) {
         productService.deleteProduct(id);
     }
 

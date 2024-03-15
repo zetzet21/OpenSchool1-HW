@@ -1,8 +1,9 @@
 package exercise.zetzet.HW1.services;
 
-import exercise.zetzet.HW1.dtos.CategoryDto;
-import exercise.zetzet.HW1.models.Category;
+import exercise.zetzet.HW1.domain.CategoryDto;
+import exercise.zetzet.HW1.entity.Category;
 import exercise.zetzet.HW1.repositories.CategoryRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
